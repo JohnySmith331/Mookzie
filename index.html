@@ -1027,4 +1027,232 @@
                     <p>While we take every precaution to make the Software safe, we cannot guarantee that using third-party software with Fortnite won't result in account actions by Epic Games. You use the Software at your own risk.</p>
                     
                     <h3>7. Changes to Terms</h3>
-                    <p>We reserve the
+                    <p>We reserve the right to modify these terms at any time. Your continued use of the Software constitutes acceptance of any changes.</p>
+                    
+                    <h3>8. Termination</h3>
+                    <p>We may terminate your access to the Software at any time without notice if you violate these terms.</p>
+                </div>
+            </section>
+        </div>
+        
+        <!-- Download Page -->
+        <div id="download" class="page">
+            <section class="section download">
+                <h2 class="section-title">DOWNLOAD <span class="glow-text">NOW</span></h2>
+                <p style="text-align: center; max-width: 800px; margin: 0 auto 3rem;">Get the latest version of Mookzie Swapper and start using any Fortnite skin today.</p>
+                
+                <div class="download-options">
+                    <div class="download-card glow-box">
+                        <div class="icon">
+                            <i class="fab fa-windows"></i>
+                        </div>
+                        <h3>Windows</h3>
+                        <p>Compatible with Windows 10/11</p>
+                        <a href="#" class="btn">Download v2.4.1</a>
+                    </div>
+                    
+                    <div class="download-card glow-box">
+                        <div class="icon">
+                            <i class="fas fa-mobile-alt"></i>
+                        </div>
+                        <h3>Mobile (Beta)</h3>
+                        <p>For Android devices only</p>
+                        <a href="#" class="btn">Download Beta</a>
+                    </div>
+                    
+                    <div class="download-card glow-box">
+                        <div class="icon">
+                            <i class="fas fa-download"></i>
+                        </div>
+                        <h3>Legacy Versions</h3>
+                        <p>Previous stable releases</p>
+                        <a href="#" class="btn">Archive</a>
+                    </div>
+                </div>
+                
+                <div style="margin-top: 4rem; text-align: center;">
+                    <h3 style="color: var(--neon-green); margin-bottom: 1rem;">Need Help?</h3>
+                    <p>Join our Discord for support and updates</p>
+                    <a href="#" class="btn" style="margin-top: 1rem;"><i class="fab fa-discord"></i> Discord Support</a>
+                </div>
+            </section>
+        </div>
+    </div>
+    
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-column">
+                <h3>About Mookzie</h3>
+                <p>We're a small team of developers passionate about Fortnite and creating tools that enhance the gaming experience without compromising account safety.</p>
+                <div class="social-links">
+                    <a href="#" class="social-link"><i class="fab fa-discord"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+            
+            <div class="footer-column">
+                <h3>Quick Links</h3>
+                <ul class="footer-links">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#features">Features</a></li>
+                    <li><a href="#vouchers">Vouchers</a></li>
+                    <li><a href="#faq">FAQ</a></li>
+                    <li><a href="#tos">Terms</a></li>
+                    <li><a href="#download">Download</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-column">
+                <h3>Support</h3>
+                <ul class="footer-links">
+                    <li><a href="#">Discord</a></li>
+                    <li><a href="#">Troubleshooting</a></li>
+                    <li><a href="#">Update Log</a></li>
+                    <li><a href="#">Report Issue</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-column">
+                <h3>Contact</h3>
+                <p>For all inquiries, please contact us through Discord:</p>
+                <p style="color: var(--neon-green); margin-top: 1rem;">MintyTrees#0001</p>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <p>© 2023 MOOKZIE SWAPPER | Not affiliated with Epic Games or Fortnite</p>
+            <p style="margin-top: 0.5rem;">All game content and materials are trademarks and copyrights of their respective owners.</p>
+        </div>
+    </footer>
+    
+    <script>
+        // Matrix background animation
+        const canvas = document.getElementById('matrix');
+        const ctx = canvas.getContext('2d');
+        
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+        
+        const katakana = 'アァカサタナハマヤャラワガザダバパイィキシチニヒミリヰギジヂビピウゥクスツヌフムユュルグズブヅプエェケセテネヘメレヱゲゼデベペオォコソトノホモヨョロヲゴゾドボポヴッン';
+        const latin = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+        const nums = '0123456789';
+        
+        const alphabet = katakana + latin + nums;
+        
+        const fontSize = 16;
+        const columns = canvas.width / fontSize;
+        
+        const rainDrops = [];
+        
+        for (let x = 0; x < columns; x++) {
+            rainDrops[x] = 1;
+        }
+        
+        const draw = () => {
+            ctx.fillStyle = 'rgba(0, 0, 0, 0.05)';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+            
+            ctx.fillStyle = '#0F0';
+            ctx.font = fontSize + 'px monospace';
+            
+            for (let i = 0; i < rainDrops.length; i++) {
+                const text = alphabet.charAt(Math.floor(Math.random() * alphabet.length));
+                ctx.fillText(text, i * fontSize, rainDrops[i] * fontSize);
+                
+                if (rainDrops[i] * fontSize > canvas.height && Math.random() > 0.975) {
+                    rainDrops[i] = 0;
+                }
+                rainDrops[i]++;
+            }
+        };
+        
+        setInterval(draw, 30);
+        
+        // Page navigation
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                // Hide all pages
+                document.querySelectorAll('.page').forEach(page => {
+                    page.classList.remove('active-page');
+                });
+                
+                // Show selected page
+                const pageId = this.getAttribute('data-page');
+                document.getElementById(pageId).classList.add('active-page');
+                
+                // Update active nav link
+                document.querySelectorAll('.nav-link').forEach(navLink => {
+                    navLink.classList.remove('active');
+                });
+                this.classList.add('active');
+                
+                // Scroll to top
+                window.scrollTo(0, 0);
+            });
+        });
+        
+        // FAQ accordion
+        document.querySelectorAll('.faq-question').forEach(question => {
+            question.addEventListener('click', () => {
+                const item = question.parentElement;
+                item.classList.toggle('active');
+                
+                // Close other items
+                document.querySelectorAll('.faq-item').forEach(faqItem => {
+                    if (faqItem !== item) {
+                        faqItem.classList.remove('active');
+                    }
+                });
+            });
+        });
+        
+        // Language selector
+        document.getElementById('languageSelect').addEventListener('change', function() {
+            // In a real implementation, this would load translations
+            alert('Language changed to: ' + this.value);
+        });
+        
+        // Sticky nav on scroll
+        window.addEventListener('scroll', () => {
+            const nav = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                nav.classList.add('scrolled');
+            } else {
+                nav.classList.remove('scrolled');
+            }
+        });
+        
+        // Animate stats counters
+        function animateValue(id, start, end, duration) {
+            const obj = document.getElementById(id);
+            let startTimestamp = null;
+            const step = (timestamp) => {
+                if (!startTimestamp) startTimestamp = timestamp;
+                const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+                const value = Math.floor(progress * (end - start) + start);
+                obj.innerHTML = value.toLocaleString() + '+';
+                if (progress < 1) {
+                    window.requestAnimationFrame(step);
+                }
+            };
+            window.requestAnimationFrame(step);
+        }
+        
+        // Initialize first page
+        document.addEventListener('DOMContentLoaded', () => {
+            document.getElementById('home').classList.add('active-page');
+            
+            // Animate counters after a delay
+            setTimeout(() => {
+                animateValue('userCount', 0, 500, 2000);
+                animateValue('skinCount', 0, 1200, 2000);
+            }, 500);
+        });
+    </script>
+</body>
+</html>
