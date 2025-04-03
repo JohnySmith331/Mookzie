@@ -9,11 +9,11 @@
     <style>
         :root {
             --black: #0a0a0a;
-            --dark-green: #0dff00;
+            --dark-gray: #1a1a1a;
+            --medium-gray: #2a2a2a;
+            --light-gray: #3a3a3a;
             --neon-green: #00ff4c;
-            --accent-purple: #8a2be2;
             --accent-blue: #00b4ff;
-            --matrix-green: #00ff41;
         }
         
         * {
@@ -27,22 +27,7 @@
             background-color: var(--black);
             color: white;
             overflow-x: hidden;
-            background-image: 
-                radial-gradient(circle at 20% 30%, rgba(0, 255, 65, 0.03), transparent 25%),
-                radial-gradient(circle at 80% 70%, rgba(138, 43, 226, 0.03), transparent 25%),
-                linear-gradient(to bottom, rgba(10, 10, 10, 0.9), rgba(10, 10, 10, 0.95));
-        }
-        
-        /* Matrix code rain animation */
-        .matrix-bg {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -1;
-            opacity: 0.15;
-            pointer-events: none;
+            line-height: 1.6;
         }
         
         /* Page transition */
@@ -62,8 +47,7 @@
         
         /* Navbar */
         nav {
-            background: rgba(10, 10, 10, 0.8);
-            backdrop-filter: blur(10px);
+            background: rgba(10, 10, 10, 0.95);
             padding: 1rem 5%;
             display: flex;
             justify-content: space-between;
@@ -71,14 +55,13 @@
             position: fixed;
             width: 100%;
             z-index: 100;
-            border-bottom: 1px solid var(--dark-green);
+            border-bottom: 1px solid var(--medium-gray);
             transition: all 0.3s ease;
         }
         
         nav.scrolled {
-            padding: 0.5rem 5%;
-            background: rgba(0, 0, 0, 0.95);
-            box-shadow: 0 5px 30px rgba(0, 255, 76, 0.1);
+            padding: 0.8rem 5%;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
         }
         
         .logo {
@@ -133,7 +116,7 @@
         
         .language-selector {
             background: transparent;
-            border: 1px solid var(--neon-green);
+            border: 1px solid var(--light-gray);
             color: white;
             padding: 0.3rem 0.6rem;
             border-radius: 5px;
@@ -155,6 +138,7 @@
             padding: 0 5%;
             position: relative;
             overflow: hidden;
+            background: linear-gradient(135deg, rgba(0,0,0,0.9) 0%, rgba(20,20,20,0.95) 100%);
         }
         
         .hero-content {
@@ -164,8 +148,8 @@
         }
         
         .hero h1 {
-            font-size: 4rem;
-            margin-bottom: 1rem;
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
             background: linear-gradient(90deg, var(--neon-green), var(--accent-blue));
             -webkit-background-clip: text;
             background-clip: text;
@@ -176,17 +160,17 @@
         
         .hero p {
             font-size: 1.2rem;
-            margin-bottom: 2rem;
+            margin-bottom: 2.5rem;
             opacity: 0.9;
             max-width: 600px;
         }
         
         .btn {
             display: inline-block;
-            background: linear-gradient(45deg, var(--dark-green), var(--accent-blue));
+            background: linear-gradient(45deg, var(--neon-green), var(--accent-blue));
             color: black;
             padding: 0.8rem 2rem;
-            border-radius: 50px;
+            border-radius: 4px;
             text-decoration: none;
             font-weight: 700;
             transition: 0.3s;
@@ -197,8 +181,8 @@
         }
         
         .btn:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(0, 255, 76, 0.3);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 255, 76, 0.3);
         }
         
         .btn-outline {
@@ -211,7 +195,6 @@
         .btn-outline:hover {
             background: var(--neon-green);
             color: black;
-            box-shadow: 0 10px 20px rgba(0, 255, 76, 0.3);
         }
         
         /* Stats Counter */
@@ -244,6 +227,7 @@
         .section {
             padding: 6rem 10%;
             position: relative;
+            background: var(--dark-gray);
         }
         
         .section-title {
@@ -275,6 +259,7 @@
             margin-bottom: 1.5rem;
             line-height: 1.8;
             font-size: 1.1rem;
+            color: #ccc;
         }
         
         .about-features {
@@ -299,25 +284,28 @@
             color: var(--neon-green);
         }
         
-        .about-image {
-            position: relative;
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
-            background: rgba(0, 255, 76, 0.1);
+        .feature-text p {
+            color: #aaa;
+            font-size: 0.95rem;
+        }
+        
+        .about-image-placeholder {
             height: 400px;
+            background: var(--medium-gray);
+            border-radius: 8px;
             display: flex;
             align-items: center;
             justify-content: center;
             color: var(--neon-green);
             font-size: 1.2rem;
+            border: 1px solid var(--light-gray);
         }
         
         /* Vouchers Section */
         .vouchers {
-            background: rgba(0, 0, 0, 0.3);
-            border-top: 1px solid rgba(13, 255, 0, 0.1);
-            border-bottom: 1px solid rgba(13, 255, 0, 0.1);
+            background: var(--black);
+            border-top: 1px solid var(--medium-gray);
+            border-bottom: 1px solid var(--medium-gray);
         }
         
         .vouchers .section-title {
@@ -337,18 +325,17 @@
         }
         
         .testimonial {
-            background: rgba(20, 20, 20, 0.8);
+            background: var(--dark-gray);
             padding: 2rem;
-            border-radius: 10px;
-            border: 1px solid rgba(13, 255, 0, 0.3);
+            border-radius: 8px;
+            border: 1px solid var(--medium-gray);
             transition: 0.3s;
-            backdrop-filter: blur(5px);
         }
         
         .testimonial:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 10px 30px rgba(0, 255, 76, 0.1);
+            transform: translateY(-5px);
             border-color: var(--neon-green);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
         }
         
         .testimonial .user {
@@ -358,16 +345,16 @@
         }
         
         .testimonial .user-avatar {
-            width: 60px;
-            height: 60px;
+            width: 50px;
+            height: 50px;
             border-radius: 50%;
             margin-right: 1rem;
-            border: 2px solid var(--neon-green);
-            background: rgba(0, 255, 76, 0.2);
+            background: var(--medium-gray);
             display: flex;
             align-items: center;
             justify-content: center;
             color: var(--neon-green);
+            font-size: 1.2rem;
         }
         
         .testimonial .user-info h4 {
@@ -378,26 +365,14 @@
         
         .testimonial .user-info p {
             font-size: 0.9rem;
-            opacity: 0.7;
+            color: #aaa;
         }
         
         .testimonial .testimonial-text {
-            font-style: italic;
             line-height: 1.6;
             margin-bottom: 1.5rem;
-        }
-        
-        .testimonial .screenshot-placeholder {
-            width: 100%;
-            height: 200px;
-            border-radius: 5px;
-            margin-top: 1rem;
-            border: 1px dashed rgba(13, 255, 0, 0.3);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--neon-green);
-            background: rgba(0, 255, 76, 0.05);
+            color: #ddd;
+            font-style: italic;
         }
         
         /* Features Section */
@@ -408,23 +383,21 @@
         }
         
         .feature-card {
-            background: rgba(20, 20, 20, 0.6);
-            border-radius: 10px;
+            background: var(--dark-gray);
+            border-radius: 8px;
             padding: 2rem;
-            border: 1px solid rgba(13, 255, 0, 0.2);
+            border: 1px solid var(--medium-gray);
             transition: 0.3s;
             text-align: center;
         }
         
         .feature-card:hover {
-            transform: translateY(-10px);
-            background: rgba(30, 30, 30, 0.7);
+            transform: translateY(-5px);
             border-color: var(--neon-green);
-            box-shadow: 0 10px 30px rgba(0, 255, 76, 0.1);
         }
         
         .feature-card .icon {
-            font-size: 3rem;
+            font-size: 2.5rem;
             color: var(--neon-green);
             margin-bottom: 1.5rem;
         }
@@ -434,29 +407,19 @@
             color: var(--neon-green);
         }
         
+        .feature-card p {
+            color: #aaa;
+            font-size: 0.95rem;
+        }
+        
         /* TOS Section */
         .tos-content {
-            background: rgba(20, 20, 20, 0.7);
-            padding: 3rem;
-            border-radius: 10px;
-            border: 1px solid rgba(13, 255, 0, 0.2);
+            background: var(--dark-gray);
+            padding: 2.5rem;
+            border-radius: 8px;
+            border: 1px solid var(--medium-gray);
             max-height: 500px;
             overflow-y: auto;
-            scrollbar-width: thin;
-            scrollbar-color: var(--neon-green) rgba(20, 20, 20, 0.7);
-        }
-        
-        .tos-content::-webkit-scrollbar {
-            width: 8px;
-        }
-        
-        .tos-content::-webkit-scrollbar-track {
-            background: rgba(20, 20, 20, 0.7);
-        }
-        
-        .tos-content::-webkit-scrollbar-thumb {
-            background-color: var(--neon-green);
-            border-radius: 10px;
         }
         
         .tos-content h3 {
@@ -468,6 +431,7 @@
         .tos-content p, .tos-content ul {
             margin-bottom: 1rem;
             line-height: 1.7;
+            color: #ccc;
         }
         
         .tos-content ul {
@@ -481,7 +445,7 @@
         /* Download Section */
         .download {
             text-align: center;
-            background: linear-gradient(to bottom, rgba(0, 0, 0, 0.7), rgba(10, 10, 10, 0.9));
+            background: var(--black);
         }
         
         .download .section-title {
@@ -503,22 +467,21 @@
         }
         
         .download-card {
-            background: rgba(20, 20, 20, 0.7);
-            border-radius: 10px;
+            background: var(--dark-gray);
+            border-radius: 8px;
             padding: 2rem;
             width: 300px;
-            border: 1px solid rgba(13, 255, 0, 0.3);
+            border: 1px solid var(--medium-gray);
             transition: 0.3s;
         }
         
         .download-card:hover {
-            transform: translateY(-10px);
+            transform: translateY(-5px);
             border-color: var(--neon-green);
-            box-shadow: 0 10px 30px rgba(0, 255, 76, 0.1);
         }
         
         .download-card .icon {
-            font-size: 3rem;
+            font-size: 2.5rem;
             color: var(--neon-green);
             margin-bottom: 1.5rem;
         }
@@ -529,15 +492,15 @@
         
         .download-card p {
             margin-bottom: 1.5rem;
-            opacity: 0.8;
+            color: #aaa;
         }
         
         /* FAQ Section */
         .faq-item {
-            background: rgba(20, 20, 20, 0.7);
-            border-radius: 10px;
+            background: var(--dark-gray);
+            border-radius: 8px;
             margin-bottom: 1rem;
-            border: 1px solid rgba(13, 255, 0, 0.2);
+            border: 1px solid var(--medium-gray);
             overflow: hidden;
         }
         
@@ -552,11 +515,12 @@
         }
         
         .faq-question:hover {
-            background: rgba(30, 30, 30, 0.7);
+            background: rgba(255, 255, 255, 0.05);
         }
         
         .faq-question i {
             transition: 0.3s;
+            color: var(--neon-green);
         }
         
         .faq-answer {
@@ -564,10 +528,11 @@
             max-height: 0;
             overflow: hidden;
             transition: max-height 0.3s ease, padding 0.3s ease;
+            color: #ccc;
         }
         
         .faq-item.active .faq-question {
-            background: rgba(30, 30, 30, 0.7);
+            background: rgba(255, 255, 255, 0.05);
             color: var(--neon-green);
         }
         
@@ -582,9 +547,9 @@
         
         /* Footer */
         footer {
-            background: rgba(10, 10, 10, 0.95);
+            background: var(--dark-gray);
             padding: 4rem 5% 2rem;
-            border-top: 1px solid var(--dark-green);
+            border-top: 1px solid var(--medium-gray);
         }
         
         .footer-content {
@@ -663,7 +628,7 @@
         .footer-bottom {
             text-align: center;
             padding-top: 2rem;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            border-top: 1px solid var(--medium-gray);
             color: #aaa;
             font-size: 0.9rem;
         }
@@ -674,7 +639,7 @@
                 grid-template-columns: 1fr;
             }
             
-            .about-image {
+            .about-image-placeholder {
                 order: -1;
                 max-width: 600px;
                 margin: 0 auto;
@@ -698,6 +663,11 @@
             .section {
                 padding: 4rem 5%;
             }
+            
+            .btn-outline {
+                margin-left: 0;
+                margin-top: 1rem;
+            }
         }
         
         @media (max-width: 576px) {
@@ -705,25 +675,26 @@
                 font-size: 2rem;
             }
             
-            .btn-outline {
-                margin-left: 0;
-                margin-top: 1rem;
-                display: block;
-            }
-            
             .testimonials {
                 grid-template-columns: 1fr;
+            }
+            
+            .download-options {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .download-card {
+                width: 100%;
+                max-width: 350px;
             }
         }
     </style>
 </head>
 <body>
-    <!-- Matrix Background Animation -->
-    <canvas id="matrix" class="matrix-bg"></canvas>
-    
     <!-- Navbar -->
     <nav id="navbar">
-        <a href="#" class="logo">MOOKZIE <span class="glow-text">SWAPPER</span></a>
+        <a href="#" class="logo">MOOKZIE <span>SWAPPER</span></a>
         <div class="nav-links">
             <a href="#home" class="nav-link active" data-page="home">Home</a>
             <a href="#about" class="nav-link" data-page="about">About</a>
@@ -737,7 +708,6 @@
                 <option value="es">Español</option>
                 <option value="fr">Français</option>
                 <option value="de">Deutsch</option>
-                <option value="ru">Русский</option>
             </select>
         </div>
     </nav>
@@ -749,10 +719,10 @@
             <section class="hero">
                 <div class="hero-content">
                     <h1>UNLOCK EVERY FORTNITE SKIN</h1>
-                    <p>The most advanced Fortnite skin changer with military-grade encryption. Join 500,000+ players using our undetected client-side skin technology.</p>
+                    <p>The most advanced Fortnite skin changer with military-grade encryption. Join thousands of players using our undetected client-side skin technology.</p>
                     <div>
-                        <a href="#download" class="btn glow-box">DOWNLOAD NOW</a>
-                        <a href="#about" class="btn btn-outline glow-box">LEARN MORE</a>
+                        <a href="#download" class="btn">DOWNLOAD NOW</a>
+                        <a href="#about" class="btn btn-outline">LEARN MORE</a>
                     </div>
                     
                     <div class="stats">
@@ -776,7 +746,7 @@
         <!-- About Page -->
         <div id="about" class="page">
             <section class="section">
-                <h2 class="section-title">ABOUT <span class="glow-text">MOOKZIE SWAPPER</span></h2>
+                <h2 class="section-title">ABOUT MOOKZIE SWAPPER</h2>
                 <div class="about-content">
                     <div class="about-text">
                         <p>Mookzie Swapper is developed by a dedicated team of reverse engineers and Fortnite enthusiasts. Our tool uses proprietary client-side rendering technology to change your skins without modifying game files or triggering anti-cheat systems.</p>
@@ -816,11 +786,9 @@
                         </div>
                         
                         <p>Our team monitors Fortnite updates around the clock to ensure compatibility. When Epic Games releases a new patch, we typically have an updated version ready within 4-6 hours.</p>
-                        
-                        <p>Join our Discord community of 50,000+ users for support, updates, and exclusive beta features.</p>
                     </div>
                     
-                    <div class="about-image">
+                    <div class="about-image-placeholder">
                         [App Interface Preview]
                     </div>
                 </div>
@@ -830,9 +798,9 @@
         <!-- Features Page -->
         <div id="features" class="page">
             <section class="section">
-                <h2 class="section-title">CUTTING-EDGE <span class="glow-text">FEATURES</span></h2>
+                <h2 class="section-title">CUTTING-EDGE FEATURES</h2>
                 <div class="features-grid">
-                    <div class="feature-card glow-box">
+                    <div class="feature-card">
                         <div class="icon">
                             <i class="fas fa-lock"></i>
                         </div>
@@ -840,7 +808,7 @@
                         <p>Our proprietary encryption ensures your account stays safe while using any skin</p>
                     </div>
                     
-                    <div class="feature-card glow-box">
+                    <div class="feature-card">
                         <div class="icon">
                             <i class="fas fa-bolt"></i>
                         </div>
@@ -848,7 +816,7 @@
                         <p>Change skins in-game without restarting Fortnite</p>
                     </div>
                     
-                    <div class="feature-card glow-box">
+                    <div class="feature-card">
                         <div class="icon">
                             <i class="fas fa-boxes"></i>
                         </div>
@@ -856,7 +824,7 @@
                         <p>Every skin from Chapter 1 to the latest Battle Pass</p>
                     </div>
                     
-                    <div class="feature-card glow-box">
+                    <div class="feature-card">
                         <div class="icon">
                             <i class="fas fa-cloud-download-alt"></i>
                         </div>
@@ -864,7 +832,7 @@
                         <p>Automatically downloads new skins as they're added</p>
                     </div>
                     
-                    <div class="feature-card glow-box">
+                    <div class="feature-card">
                         <div class="icon">
                             <i class="fas fa-user-friends"></i>
                         </div>
@@ -872,7 +840,7 @@
                         <p>Manage skins across multiple Fortnite accounts</p>
                     </div>
                     
-                    <div class="feature-card glow-box">
+                    <div class="feature-card">
                         <div class="icon">
                             <i class="fas fa-sliders-h"></i>
                         </div>
@@ -886,12 +854,12 @@
         <!-- Vouchers Page -->
         <div id="vouchers" class="page">
             <section class="section vouchers">
-                <h2 class="section-title">USER <span class="glow-text">VOUCHERS</span></h2>
+                <h2 class="section-title">USER VOUCHERS</h2>
                 <p style="text-align: center; margin-bottom: 3rem; max-width: 800px; margin-left: auto; margin-right: auto;">Don't just take our word for it. Here's what our users say about Mookzie Swapper.</p>
                 
                 <div class="testimonials">
                     <!-- Testimonial 1 -->
-                    <div class="testimonial glow-box">
+                    <div class="testimonial">
                         <div class="user">
                             <div class="user-avatar">
                                 <i class="fas fa-user"></i>
@@ -904,13 +872,10 @@
                         <div class="testimonial-text">
                             "Been using Mookzie since Chapter 2. Never had any issues and my viewers think I've spent thousands on skins. The best part? It's completely free!"
                         </div>
-                        <div class="screenshot-placeholder">
-                            [Screenshot of app in use]
-                        </div>
                     </div>
                     
                     <!-- Testimonial 2 -->
-                    <div class="testimonial glow-box">
+                    <div class="testimonial">
                         <div class="user">
                             <div class="user-avatar">
                                 <i class="fas fa-user"></i>
@@ -923,13 +888,10 @@
                         <div class="testimonial-text">
                             "I was skeptical at first but after seeing streamers use it safely for months, I tried it. Now I have every OG skin I missed. Works perfectly in tournaments too!"
                         </div>
-                        <div class="screenshot-placeholder">
-                            [Screenshot of skin selection]
-                        </div>
                     </div>
                     
                     <!-- Testimonial 3 -->
-                    <div class="testimonial glow-box">
+                    <div class="testimonial">
                         <div class="user">
                             <div class="user-avatar">
                                 <i class="fas fa-user"></i>
@@ -942,9 +904,6 @@
                         <div class="testimonial-text">
                             "The only skin changer I trust. Updates come faster than any other tool, and the Discord support is amazing. My account has been safe since Chapter 1."
                         </div>
-                        <div class="screenshot-placeholder">
-                            [Screenshot of in-game result]
-                        </div>
                     </div>
                 </div>
             </section>
@@ -953,7 +912,7 @@
         <!-- FAQ Page -->
         <div id="faq" class="page">
             <section class="section">
-                <h2 class="section-title">FREQUENTLY <span class="glow-text">ASKED QUESTIONS</span></h2>
+                <h2 class="section-title">FREQUENTLY ASKED QUESTIONS</h2>
                 
                 <div class="faq-item">
                     <div class="faq-question">
@@ -1010,7 +969,7 @@
         <!-- TOS Page -->
         <div id="tos" class="page">
             <section class="section">
-                <h2 class="section-title">TERMS OF <span class="glow-text">SERVICE</span></h2>
+                <h2 class="section-title">TERMS OF SERVICE</h2>
                 
                 <div class="tos-content">
                     <h3>1. Acceptance of Terms</h3>
@@ -1055,11 +1014,11 @@
         <!-- Download Page -->
         <div id="download" class="page">
             <section class="section download">
-                <h2 class="section-title">DOWNLOAD <span class="glow-text">NOW</span></h2>
+                <h2 class="section-title">DOWNLOAD NOW</h2>
                 <p style="text-align: center; max-width: 800px; margin: 0 auto 3rem;">Get the latest version of Mookzie Swapper and start using any Fortnite skin today.</p>
                 
                 <div class="download-options">
-                    <div class="download-card glow-box">
+                    <div class="download-card">
                         <div class="icon">
                             <i class="fab fa-windows"></i>
                         </div>
@@ -1068,7 +1027,7 @@
                         <a href="#" class="btn">Download v2.4.1</a>
                     </div>
                     
-                    <div class="download-card glow-box">
+                    <div class="download-card">
                         <div class="icon">
                             <i class="fas fa-mobile-alt"></i>
                         </div>
@@ -1077,7 +1036,7 @@
                         <a href="#" class="btn">Download Beta</a>
                     </div>
                     
-                    <div class="download-card glow-box">
+                    <div class="download-card">
                         <div class="icon">
                             <i class="fas fa-download"></i>
                         </div>
@@ -1146,48 +1105,6 @@
     </footer>
     
     <script>
-        // Matrix background animation
-        const canvas = document.getElementById('matrix');
-        const ctx = canvas.getContext('2d');
-        
-        canvas.width = window.innerWidth;
-        canvas.height = window.innerHeight;
-        
-        const katakana = 'アァカサタナハマヤャラワガザダバパイィキシチニヒミリヰギジヂビピウゥクスツヌフムユュルグズブヅプエェケセテネヘメレヱゲゼデベペオォコソトノホモヨョロヲゴゾドボポヴッン';
-        const latin = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
-        const nums = '0123456789';
-        
-        const alphabet = katakana + latin + nums;
-        
-        const fontSize = 16;
-        const columns = canvas.width / fontSize;
-        
-        const rainDrops = [];
-        
-        for (let x = 0; x < columns; x++) {
-            rainDrops[x] = 1;
-        }
-        
-        const draw = () => {
-            ctx.fillStyle = 'rgba(0, 0, 0, 0.05)';
-            ctx.fillRect(0, 0, canvas.width, canvas.height);
-            
-            ctx.fillStyle = '#0F0';
-            ctx.font = fontSize + 'px monospace';
-            
-            for (let i = 0; i < rainDrops.length; i++) {
-                const text = alphabet.charAt(Math.floor(Math.random() * alphabet.length));
-                ctx.fillText(text, i * fontSize, rainDrops[i] * fontSize);
-                
-                if (rainDrops[i] * fontSize > canvas.height && Math.random() > 0.975) {
-                    rainDrops[i] = 0;
-                }
-                rainDrops[i]++;
-            }
-        };
-        
-        setInterval(draw, 30);
-        
         // Page navigation
         document.querySelectorAll('.nav-link').forEach(link => {
             link.addEventListener('click', function(e) {
@@ -1230,7 +1147,6 @@
         
         // Language selector
         document.getElementById('languageSelect').addEventListener('change', function() {
-            // In a real implementation, this would load translations
             alert('Language changed to: ' + this.value);
         });
         
