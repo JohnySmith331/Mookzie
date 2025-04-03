@@ -45,30 +45,19 @@
             pointer-events: none;
         }
         
-        /* Glow effects */
-        .glow-text {
-            text-shadow: 0 0 10px var(--neon-green);
+        /* Page transition */
+        .page {
+            display: none;
+            animation: fadeIn 0.5s ease;
         }
         
-        .glow-box {
-            box-shadow: 0 0 15px var(--dark-green);
-            transition: all 0.3s ease;
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
         }
         
-        .glow-box:hover {
-            box-shadow: 0 0 25px var(--neon-green);
-        }
-        
-        /* Smooth page transitions */
-        main {
-            opacity: 0;
-            transform: translateY(20px);
-            transition: opacity 0.5s ease, transform 0.5s ease;
-        }
-        
-        main.loaded {
-            opacity: 1;
-            transform: translateY(0);
+        .active-page {
+            display: block;
         }
         
         /* Navbar */
@@ -134,6 +123,14 @@
             width: 100%;
         }
         
+        .nav-links a.active {
+            color: var(--neon-green);
+        }
+        
+        .nav-links a.active::after {
+            width: 100%;
+        }
+        
         .language-selector {
             background: transparent;
             border: 1px solid var(--neon-green);
@@ -142,6 +139,12 @@
             border-radius: 5px;
             margin-left: 1rem;
             cursor: pointer;
+        }
+        
+        /* Main content container */
+        .main-content {
+            padding-top: 80px;
+            min-height: calc(100vh - 80px);
         }
         
         /* Hero Section */
@@ -717,13 +720,13 @@
     <nav id="navbar">
         <a href="#" class="logo">MOOKZIE <span class="glow-text">SWAPPER</span></a>
         <div class="nav-links">
-            <a href="#home">Home</a>
-            <a href="#about">About</a>
-            <a href="#features">Features</a>
-            <a href="#vouchers">Vouchers</a>
-            <a href="#faq">FAQ</a>
-            <a href="#tos">TOS</a>
-            <a href="#download">Download</a>
+            <a href="#home" class="nav-link active" data-page="home">Home</a>
+            <a href="#about" class="nav-link" data-page="about">About</a>
+            <a href="#features" class="nav-link" data-page="features">Features</a>
+            <a href="#vouchers" class="nav-link" data-page="vouchers">Vouchers</a>
+            <a href="#faq" class="nav-link" data-page="faq">FAQ</a>
+            <a href="#tos" class="nav-link" data-page="tos">TOS</a>
+            <a href="#download" class="nav-link" data-page="download">Download</a>
             <select class="language-selector" id="languageSelect">
                 <option value="en">English</option>
                 <option value="es">Español</option>
@@ -735,292 +738,293 @@
     </nav>
     
     <!-- Main Content -->
-    <main id="main-content">
-        <!-- Hero Section -->
-        <section class="hero" id="home">
-            <div class="hero-content">
-                <h1>UNLOCK EVERY FORTNITE SKIN</h1>
-                <p>The most advanced Fortnite skin changer with military-grade encryption. Join 500,000+ players using our undetected client-side skin technology.</p>
-                <div>
-                    <a href="#download" class="btn glow-box">DOWNLOAD NOW</a>
-                    <a href="#about" class="btn btn-outline glow-box">LEARN MORE</a>
+    <div class="main-content">
+        <!-- Home Page -->
+        <div id="home" class="page active-page">
+            <section class="hero">
+                <div class="hero-content">
+                    <h1>UNLOCK EVERY FORTNITE SKIN</h1>
+                    <p>The most advanced Fortnite skin changer with military-grade encryption. Join 500,000+ players using our undetected client-side skin technology.</p>
+                    <div>
+                        <a href="#download" class="btn glow-box">DOWNLOAD NOW</a>
+                        <a href="#about" class="btn btn-outline glow-box">LEARN MORE</a>
+                    </div>
+                    
+                    <div class="stats">
+                        <div class="stat-item">
+                            <div class="stat-number" id="userCount">500K+</div>
+                            <div class="stat-label">Active Users</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number" id="skinCount">1.2K+</div>
+                            <div class="stat-label">Skins Available</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number" id="updateCount">24/7</div>
+                            <div class="stat-label">Support</div>
+                        </div>
+                    </div>
                 </div>
-                
-                <div class="stats">
-                    <div class="stat-item">
-                        <div class="stat-number" id="userCount">500K+</div>
-                        <div class="stat-label">Active Users</div>
-                    </div>
-                    <div class="stat-item">
-                        <div class="stat-number" id="skinCount">1.2K+</div>
-                        <div class="stat-label">Skins Available</div>
-                    </div>
-                    <div class="stat-item">
-                        <div class="stat-number" id="updateCount">24/7</div>
-                        <div class="stat-label">Support</div>
-                    </div>
-                </div>
-            </div>
-        </section>
+            </section>
+        </div>
         
-        <!-- About Section -->
-        <section class="section" id="about">
-            <h2 class="section-title">ABOUT <span class="glow-text">MOOKZIE SWAPPER</span></h2>
-            <div class="about-content">
-                <div class="about-text">
-                    <p>Mookzie Swapper is developed by a dedicated team of reverse engineers and Fortnite enthusiasts. Our tool uses proprietary client-side rendering technology to change your skins without modifying game files or triggering anti-cheat systems.</p>
-                    
-                    <p>Unlike other skin changers that rely on outdated methods, we've developed a unique approach that:</p>
-                    
-                    <div class="about-features">
-                        <div class="feature-item">
-                            <div class="feature-icon">
-                                <i class="fas fa-shield-alt"></i>
+        <!-- About Page -->
+        <div id="about" class="page">
+            <section class="section">
+                <h2 class="section-title">ABOUT <span class="glow-text">MOOKZIE SWAPPER</span></h2>
+                <div class="about-content">
+                    <div class="about-text">
+                        <p>Mookzie Swapper is developed by a dedicated team of reverse engineers and Fortnite enthusiasts. Our tool uses proprietary client-side rendering technology to change your skins without modifying game files or triggering anti-cheat systems.</p>
+                        
+                        <p>Unlike other skin changers that rely on outdated methods, we've developed a unique approach that:</p>
+                        
+                        <div class="about-features">
+                            <div class="feature-item">
+                                <div class="feature-icon">
+                                    <i class="fas fa-shield-alt"></i>
+                                </div>
+                                <div class="feature-text">
+                                    <h4>Military-Grade Encryption</h4>
+                                    <p>All data is encrypted with AES-256 to prevent detection</p>
+                                </div>
                             </div>
-                            <div class="feature-text">
-                                <h4>Military-Grade Encryption</h4>
-                                <p>All data is encrypted with AES-256 to prevent detection</p>
+                            
+                            <div class="feature-item">
+                                <div class="feature-icon">
+                                    <i class="fas fa-sync-alt"></i>
+                                </div>
+                                <div class="feature-text">
+                                    <h4>Real-Time Updates</h4>
+                                    <p>New skins added within hours of release</p>
+                                </div>
+                            </div>
+                            
+                            <div class="feature-item">
+                                <div class="feature-icon">
+                                    <i class="fas fa-user-secret"></i>
+                                </div>
+                                <div class="feature-text">
+                                    <h4>Zero Risk</h4>
+                                    <p>Client-side only means no ban risk</p>
+                                </div>
                             </div>
                         </div>
                         
-                        <div class="feature-item">
-                            <div class="feature-icon">
-                                <i class="fas fa-sync-alt"></i>
-                            </div>
-                            <div class="feature-text">
-                                <h4>Real-Time Updates</h4>
-                                <p>New skins added within hours of release</p>
-                            </div>
-                        </div>
+                        <p>Our team monitors Fortnite updates around the clock to ensure compatibility. When Epic Games releases a new patch, we typically have an updated version ready within 4-6 hours.</p>
                         
-                        <div class="feature-item">
-                            <div class="feature-icon">
-                                <i class="fas fa-user-secret"></i>
-                            </div>
-                            <div class="feature-text">
-                                <h4>Zero Risk</h4>
-                                <p>Client-side only means no ban risk</p>
-                            </div>
-                        </div>
+                        <p>Join our Discord community of 50,000+ users for support, updates, and exclusive beta features.</p>
                     </div>
                     
-                    <p>Our team monitors Fortnite updates around the clock to ensure compatibility. When Epic Games releases a new patch, we typically have an updated version ready within 4-6 hours.</p>
+                    <div class="about-image">
+                        <img src="https://i.imgur.com/9y8xY7d.png" alt="Mookzie Swapper Interface">
+                    </div>
+                </div>
+            </section>
+        </div>
+        
+        <!-- Features Page -->
+        <div id="features" class="page">
+            <section class="section">
+                <h2 class="section-title">CUTTING-EDGE <span class="glow-text">FEATURES</span></h2>
+                <div class="features-grid">
+                    <div class="feature-card glow-box">
+                        <div class="icon">
+                            <i class="fas fa-lock"></i>
+                        </div>
+                        <h3>Undetectable</h3>
+                        <p>Our proprietary encryption ensures your account stays safe while using any skin</p>
+                    </div>
                     
-                    <p>Join our Discord community of 50,000+ users for support, updates, and exclusive beta features.</p>
-                </div>
-                
-                <div class="about-image">
-                    <img src="https://i.imgur.com/9y8xY7d.png" alt="Mookzie Swapper Interface">
-                </div>
-            </div>
-        </section>
-        
-        <!-- Features Section -->
-        <section class="section" id="features">
-            <h2 class="section-title">CUTTING-EDGE <span class="glow-text">FEATURES</span></h2>
-            <div class="features-grid">
-                <div class="feature-card glow-box">
-                    <div class="icon">
-                        <i class="fas fa-lock"></i>
-                    </div>
-                    <h3>Undetectable</h3>
-                    <p>Our proprietary encryption ensures your account stays safe while using any skin</p>
-                </div>
-                
-                <div class="feature-card glow-box">
-                    <div class="icon">
-                        <i class="fas fa-bolt"></i>
-                    </div>
-                    <h3>Instant Apply</h3>
-                    <p>Change skins in-game without restarting Fortnite</p>
-                </div>
-                
-                <div class="feature-card glow-box">
-                    <div class="icon">
-                        <i class="fas fa-boxes"></i>
-                    </div>
-                    <h3>All Skins</h3>
-                    <p>Every skin from Chapter 1 to the latest Battle Pass</p>
-                </div>
-                
-                <div class="feature-card glow-box">
-                    <div class="icon">
-                        <i class="fas fa-cloud-download-alt"></i>
-                    </div>
-                    <h3>Auto Updates</h3>
-                    <p>Automatically downloads new skins as they're added</p>
-                </div>
-                
-                <div class="feature-card glow-box">
-                    <div class="icon">
-                        <i class="fas fa-user-friends"></i>
-                    </div>
-                    <h3>Multi-Account</h3>
-                    <p>Manage skins across multiple Fortnite accounts</p>
-                </div>
-                
-                <div class="feature-card glow-box">
-                    <div class="icon">
-                        <i class="fas fa-sliders-h"></i>
-                    </div>
-                    <h3>Advanced Controls</h3>
-                    <p>Customize rarity colors, effects, and more</p>
-                </div>
-            </div>
-        </section>
-        
-        <!-- Vouchers Section -->
-        <section class="section vouchers" id="vouchers">
-            <h2 class="section-title">USER <span class="glow-text">VOUCHERS</span></h2>
-            <p style="text-align: center; margin-bottom: 3rem; max-width: 800px; margin-left: auto; margin-right: auto;">Don't just take our word for it. Here's what our users say about Mookzie Swapper.</p>
-            
-            <div class="testimonials">
-                <!-- Testimonial 1 -->
-                <div class="testimonial glow-box">
-                    <div class="user">
-                        <img src="https://i.imgur.com/JQ9qy5A.png" alt="NinjaFan">
-                        <div class="user-info">
-                            <h4>NinjaFan</h4>
-                            <p>Content Creator | 2 Years Using</p>
+                    <div class="feature-card glow-box">
+                        <div class="icon">
+                            <i class="fas fa-bolt"></i>
                         </div>
+                        <h3>Instant Apply</h3>
+                        <p>Change skins in-game without restarting Fortnite</p>
                     </div>
-                    <div class="testimonial-text">
-                        "Been using Mookzie since Chapter 2. Never had any issues and my viewers think I've spent thousands on skins. The best part? It's completely free!"
-                    </div>
-                    <img src="https://i.imgur.com/9y8xY7d.png" alt="Screenshot" class="screenshot">
-                </div>
-                
-                <!-- Testimonial 2 -->
-                <div class="testimonial glow-box">
-                    <div class="user">
-                        <img src="https://i.imgur.com/JQ9qy5A.png" alt="OG_Skull">
-                        <div class="user-info">
-                            <h4>OG_Skull</h4>
-                            <p>Competitive Player | 1.5 Years Using</p>
+                    
+                    <div class="feature-card glow-box">
+                        <div class="icon">
+                            <i class="fas fa-boxes"></i>
                         </div>
+                        <h3>All Skins</h3>
+                        <p>Every skin from Chapter 1 to the latest Battle Pass</p>
                     </div>
-                    <div class="testimonial-text">
-                        "I was skeptical at first but after seeing streamers use it safely for months, I tried it. Now I have every OG skin I missed. Works perfectly in tournaments too!"
-                    </div>
-                    <img src="https://i.imgur.com/9y8xY7d.png" alt="Screenshot" class="screenshot">
-                </div>
-                
-                <!-- Testimonial 3 -->
-                <div class="testimonial glow-box">
-                    <div class="user">
-                        <img src="https://i.imgur.com/JQ9qy5A.png" alt="TTV_Pro">
-                        <div class="user-info">
-                            <h4>TTV_Pro</h4>
-                            <p>Twitch Partner | 3 Years Using</p>
+                    
+                    <div class="feature-card glow-box">
+                        <div class="icon">
+                            <i class="fas fa-cloud-download-alt"></i>
                         </div>
+                        <h3>Auto Updates</h3>
+                        <p>Automatically downloads new skins as they're added</p>
                     </div>
-                    <div class="testimonial-text">
-                        "The only skin changer I trust. Updates come faster than any other tool, and the Discord support is amazing. My account has been safe since Chapter 1."
+                    
+                    <div class="feature-card glow-box">
+                        <div class="icon">
+                            <i class="fas fa-user-friends"></i>
+                        </div>
+                        <h3>Multi-Account</h3>
+                        <p>Manage skins across multiple Fortnite accounts</p>
                     </div>
-                    <img src="https://i.imgur.com/9y8xY7d.png" alt="Screenshot" class="screenshot">
+                    
+                    <div class="feature-card glow-box">
+                        <div class="icon">
+                            <i class="fas fa-sliders-h"></i>
+                        </div>
+                        <h3>Advanced Controls</h3>
+                        <p>Customize rarity colors, effects, and more</p>
+                    </div>
                 </div>
-            </div>
-        </section>
+            </section>
+        </div>
         
-        <!-- FAQ Section -->
-        <section class="section" id="faq">
-            <h2 class="section-title">FREQUENTLY <span class="glow-text">ASKED QUESTIONS</span></h2>
-            
-            <div class="faq-item">
-                <div class="faq-question">
-                    <span>Is Mookzie Swapper safe to use?</span>
-                    <i class="fas fa-chevron-down"></i>
+        <!-- Vouchers Page -->
+        <div id="vouchers" class="page">
+            <section class="section vouchers">
+                <h2 class="section-title">USER <span class="glow-text">VOUCHERS</span></h2>
+                <p style="text-align: center; margin-bottom: 3rem; max-width: 800px; margin-left: auto; margin-right: auto;">Don't just take our word for it. Here's what our users say about Mookzie Swapper.</p>
+                
+                <div class="testimonials">
+                    <!-- Testimonial 1 -->
+                    <div class="testimonial glow-box">
+                        <div class="user">
+                            <img src="https://i.imgur.com/JQ9qy5A.png" alt="NinjaFan">
+                            <div class="user-info">
+                                <h4>NinjaFan</h4>
+                                <p>Content Creator | 2 Years Using</p>
+                            </div>
+                        </div>
+                        <div class="testimonial-text">
+                            "Been using Mookzie since Chapter 2. Never had any issues and my viewers think I've spent thousands on skins. The best part? It's completely free!"
+                        </div>
+                        <img src="https://i.imgur.com/9y8xY7d.png" alt="Screenshot" class="screenshot">
+                    </div>
+                    
+                    <!-- Testimonial 2 -->
+                    <div class="testimonial glow-box">
+                        <div class="user">
+                            <img src="https://i.imgur.com/JQ9qy5A.png" alt="OG_Skull">
+                            <div class="user-info">
+                                <h4>OG_Skull</h4>
+                                <p>Competitive Player | 1.5 Years Using</p>
+                            </div>
+                        </div>
+                        <div class="testimonial-text">
+                            "I was skeptical at first but after seeing streamers use it safely for months, I tried it. Now I have every OG skin I missed. Works perfectly in tournaments too!"
+                        </div>
+                        <img src="https://i.imgur.com/9y8xY7d.png" alt="Screenshot" class="screenshot">
+                    </div>
+                    
+                    <!-- Testimonial 3 -->
+                    <div class="testimonial glow-box">
+                        <div class="user">
+                            <img src="https://i.imgur.com/JQ9qy5A.png" alt="TTV_Pro">
+                            <div class="user-info">
+                                <h4>TTV_Pro</h4>
+                                <p>Twitch Partner | 3 Years Using</p>
+                            </div>
+                        </div>
+                        <div class="testimonial-text">
+                            "The only skin changer I trust. Updates come faster than any other tool, and the Discord support is amazing. My account has been safe since Chapter 1."
+                        </div>
+                        <img src="https://i.imgur.com/9y8xY7d.png" alt="Screenshot" class="screenshot">
+                    </div>
                 </div>
-                <div class="faq-answer">
-                    <p>Yes! We use client-side only rendering which means no game files are modified. Our technology has been tested by thousands of users since Chapter 1 with zero bans when used as directed.</p>
-                </div>
-            </div>
-            
-            <div class="faq-item">
-                <div class="faq-question">
-                    <span>Will I get banned for using this?</span>
-                    <i class="fas fa-chevron-down"></i>
-                </div>
-                <div class="faq-answer">
-                    <p>There is always some risk when using third-party software with Fortnite. However, our method is undetectable because it doesn't interact with game files or memory. We've had no confirmed bans in 3+ years when users follow our guidelines.</p>
-                </div>
-            </div>
-            
-            <div class="faq-item">
-                <div class="faq-question">
-                    <span>Do I need to pay for skins?</span>
-                    <i class="fas fa-chevron-down"></i>
-                </div>
-                <div class="faq-answer">
-                    <p>No! All skins are completely free. We don't believe in paywalling content that should be accessible to all players.</p>
-                </div>
-            </div>
-            
-            <div class="faq-item">
-                <div class="faq-question">
-                    <span>How often is the tool updated?</span>
-                    <i class="fas fa-chevron-down"></i>
-                </div>
-                <div class="faq-answer">
-                    <p>We typically release updates within 4-6 hours of a new Fortnite patch. Major updates are announced in our Discord server.</p>
-                </div>
-            </div>
-            
-            <div class="faq-item">
-                <div class="faq-question">
-                    <span>Can I use this in competitive play?</span>
-                    <i class="fas fa-chevron-down"></i>
-                </div>
-                <div class="faq-answer">
-                    <p>While our tool works in all game modes, we recommend disabling it during official tournaments to avoid any potential scrutiny.</p>
-                </div>
-            </div>
-        </section>
+            </section>
+        </div>
         
-        <!-- TOS Section -->
-        <section class="section" id="tos">
-            <h2 class="section-title">TERMS OF <span class="glow-text">SERVICE</span></h2>
-            
-            <div class="tos-content">
-                <h3>1. Acceptance of Terms</h3>
-                <p>By using Mookzie Swapper ("the Software"), you agree to be bound by these Terms of Service ("TOS"). If you do not agree to these terms, do not use the Software.</p>
+        <!-- FAQ Page -->
+        <div id="faq" class="page">
+            <section class="section">
+                <h2 class="section-title">FREQUENTLY <span class="glow-text">ASKED QUESTIONS</span></h2>
                 
-                <h3>2. License Grant</h3>
-                <p>We grant you a limited, non-exclusive, non-transferable license to use the Software for personal, non-commercial purposes in accordance with these TOS.</p>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Is Mookzie Swapper safe to use?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Yes! We use client-side only rendering which means no game files are modified. Our technology has been tested by thousands of users since Chapter 1 with zero bans when used as directed.</p>
+                    </div>
+                </div>
                 
-                <h3>3. User Responsibilities</h3>
-                <p>You agree to:</p>
-                <ul>
-                    <li>Use the Software at your own risk</li>
-                    <li>Not distribute or sell the Software</li>
-                    <li>Not use the Software for cheating or gaining competitive advantage</li>
-                    <li>Not hold the developers liable for any account actions taken by Epic Games</li>
-                </ul>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Will I get banned for using this?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>There is always some risk when using third-party software with Fortnite. However, our method is undetectable because it doesn't interact with game files or memory. We've had no confirmed bans in 3+ years when users follow our guidelines.</p>
+                    </div>
+                </div>
                 
-                <h3>4. No Warranty</h3>
-                <p>The Software is provided "as is" without warranty of any kind. We do not guarantee that:</p>
-                <ul>
-                    <li>The Software will meet your requirements</li>
-                    <li>The Software will be uninterrupted or error-free</li>
-                    <li>The results from using the Software will be effective or reliable</li>
-                    <li>The Software will not result in account bans or restrictions</li>
-                </ul>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Do I need to pay for skins?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>No! All skins are completely free. We don't believe in paywalling content that should be accessible to all players.</p>
+                    </div>
+                </div>
                 
-                <h3>5. Limitation of Liability</h3>
-                <p>In no event shall the developers be liable for any damages (including, without limitation, damages for loss of data or profit, or due to business interruption) arising out of the use or inability to use the Software.</p>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>How often is the tool updated?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>We typically release updates within 4-6 hours of a new Fortnite patch. Major updates are announced in our Discord server.</p>
+                    </div>
+                </div>
                 
-                <h3>6. Account Safety</h3>
-                <p>While we take every precaution to make the Software safe, we cannot guarantee that using third-party software with Fortnite won't result in account actions by Epic Games. You use the Software at your own risk.</p>
-                
-                <h3>7. Changes to Terms</h3>
-                <p>We reserve the right to modify these terms at any time. Your continued use of the Software constitutes acceptance of any changes.</p>
-                
-                <h3>8. Termination</h3>
-                <p>We may terminate your access to the Software at any time without notice if you violate these terms.</p>
-            </div>
-        </section>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Can I use this in competitive play?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>While our tool works in all game modes, we recommend disabling it during official tournaments to avoid any potential scrutiny.</p>
+                    </div>
+                </div>
+            </section>
+        </div>
         
-        <!-- Download Section -->
-        <section class="section download" id="download">
-            <h2 class="section-title">DOWNLOAD <span class="glow-text">NOW</span></h2>
-            <p style="text-align: center; max
+        <!-- TOS Page -->
+        <div id="tos" class="page">
+            <section class="section">
+                <h2 class="section-title">TERMS OF <span class="glow-text">SERVICE</span></h2>
+                
+                <div class="tos-content">
+                    <h3>1. Acceptance of Terms</h3>
+                    <p>By using Mookzie Swapper ("the Software"), you agree to be bound by these Terms of Service ("TOS"). If you do not agree to these terms, do not use the Software.</p>
+                    
+                    <h3>2. License Grant</h3>
+                    <p>We grant you a limited, non-exclusive, non-transferable license to use the Software for personal, non-commercial purposes in accordance with these TOS.</p>
+                    
+                    <h3>3. User Responsibilities</h3>
+                    <p>You agree to:</p>
+                    <ul>
+                        <li>Use the Software at your own risk</li>
+                        <li>Not distribute or sell the Software</li>
+                        <li>Not use the Software for cheating or gaining competitive advantage</li>
+                        <li>Not hold the developers liable for any account actions taken by Epic Games</li>
+                    </ul>
+                    
+                    <h3>4. No Warranty</h3>
+                    <p>The Software is provided "as is" without warranty of any kind. We do not guarantee that:</p>
+                    <ul>
+                        <li>The Software will meet your requirements</li>
+                        <li>The Software will be uninterrupted or error-free</li>
+                        <li>The results from using the Software will be effective or reliable</li>
+                        <li>The Software will not result in account bans or restrictions</li>
+                    </ul>
+                    
+                    <h3>5. Limitation of Liability</h3>
+                    <p>In no event shall the developers be liable for any damages (including, without limitation, damages for loss of data or profit, or due to business interruption) arising out of the use or inability to use the Software.</p>
+                    
+                    <h3>6. Account Safety</h3>
+                    <p>While we take every precaution to make the Software safe, we cannot guarantee that using third-party software with Fortnite won't result in account actions by Epic Games. You use the Software at your own risk.</p>
+                    
+                    <h3>7. Changes to Terms</h3>
+                    <p>We reserve the
