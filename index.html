@@ -3,113 +3,75 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Modern Website</title>
+    <title>MOOKZIE SWAPPER | Fortnite Skin Changer</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
-            --primary-color: #4361ee;
-            --secondary-color: #3f37c9;
-            --accent-color: #4cc9f0;
-            --dark-color: #2b2d42;
-            --light-color: #f8f9fa;
-            --success-color: #4bb543;
+            --black: #0a0a0a;
+            --dark-green: #0dff00;
+            --neon-green: #00ff4c;
+            --accent-purple: #8a2be2;
+            --accent-blue: #00b4ff;
         }
         
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
         
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.6;
-            color: var(--dark-color);
-            background-color: var(--light-color);
+            background-color: var(--black);
+            color: white;
             overflow-x: hidden;
         }
         
-        /* Smooth scrolling */
-        html {
-            scroll-behavior: smooth;
+        /* Glow effects */
+        .glow-text {
+            text-shadow: 0 0 10px var(--neon-green);
         }
         
-        /* Header with hero section */
-        header {
-            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-            color: white;
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            position: relative;
-            overflow: hidden;
+        .glow-box {
+            box-shadow: 0 0 15px var(--dark-green);
         }
         
-        header::before {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            height: 100px;
-            background: url('data:image/svg+xml;utf8,<svg viewBox="0 0 1200 120" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none"><path d="M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z" fill="%23f8f9fa" opacity=".25"/><path d="M0,0V15.81C13,36.92,27.64,56.86,47.69,72.05,99.41,111.27,165,111,224.58,91.58c31.15-10.15,60.09-26.07,89.67-39.8,40.92-19,84.73-46,130.83-49.67,36.26-2.85,70.9,9.42,98.6,31.56,31.77,25.39,62.32,62,103.63,73,40.44,10.79,81.35-6.69,119.13-24.28s75.16-39,116.92-43.05c59.73-5.85,113.28,22.88,168.9,38.84,30.2,8.66,59,6.17,87.09-7.5,22.43-10.89,48-26.93,60.65-49.24V0Z" fill="%23f8f9fa"/></svg>');
-            background-size: cover;
-            z-index: 1;
-        }
-        
-        /* Navigation */
+        /* Navbar */
         nav {
+            background: rgba(10, 10, 10, 0.8);
+            backdrop-filter: blur(10px);
+            padding: 1rem 5%;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 1.5rem 5%;
             position: fixed;
             width: 100%;
-            top: 0;
             z-index: 100;
-            transition: all 0.3s ease;
-        }
-        
-        nav.scrolled {
-            background-color: rgba(255, 255, 255, 0.95);
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
-            padding: 1rem 5%;
-        }
-        
-        nav.scrolled .logo, nav.scrolled a {
-            color: var(--dark-color);
-        }
-        
-        nav.scrolled a:hover {
-            color: var(--primary-color);
+            border-bottom: 1px solid var(--dark-green);
         }
         
         .logo {
             font-size: 1.8rem;
-            font-weight: 700;
-            color: white;
+            font-weight: 800;
+            color: var(--neon-green);
             text-decoration: none;
-        }
-        
-        .logo span {
-            color: var(--accent-color);
         }
         
         .nav-links {
             display: flex;
-            list-style: none;
-        }
-        
-        .nav-links li {
-            margin-left: 2rem;
+            gap: 2rem;
         }
         
         .nav-links a {
             color: white;
             text-decoration: none;
-            font-weight: 500;
-            transition: color 0.3s ease;
+            font-weight: 600;
+            transition: 0.3s;
             position: relative;
+        }
+        
+        .nav-links a:hover {
+            color: var(--neon-green);
         }
         
         .nav-links a::after {
@@ -117,39 +79,50 @@
             position: absolute;
             width: 0;
             height: 2px;
-            background: var(--accent-color);
+            background: var(--neon-green);
             bottom: -5px;
             left: 0;
-            transition: width 0.3s ease;
+            transition: 0.3s;
         }
         
         .nav-links a:hover::after {
             width: 100%;
         }
         
-        .hamburger {
-            display: none;
-            cursor: pointer;
-        }
-        
-        /* Hero content */
+        /* Hero Section */
         .hero {
-            flex: 1;
+            min-height: 100vh;
             display: flex;
             align-items: center;
             padding: 0 5%;
+            background: radial-gradient(circle at 70% 30%, rgba(13, 255, 0, 0.1), transparent 50%);
             position: relative;
-            z-index: 2;
+            overflow: hidden;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://i.imgur.com/JQ9qy5A.png') no-repeat center/cover;
+            opacity: 0.05;
+            z-index: -1;
         }
         
         .hero-content {
-            max-width: 600px;
+            max-width: 800px;
         }
         
         .hero h1 {
-            font-size: 3.5rem;
+            font-size: 4rem;
             margin-bottom: 1rem;
-            line-height: 1.2;
+            background: linear-gradient(90deg, var(--neon-green), var(--accent-blue));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
         }
         
         .hero p {
@@ -160,878 +133,275 @@
         
         .btn {
             display: inline-block;
-            background: var(--accent-color);
-            color: white;
-            padding: 0.8rem 1.8rem;
+            background: linear-gradient(45deg, var(--dark-green), var(--accent-blue));
+            color: black;
+            padding: 0.8rem 2rem;
             border-radius: 50px;
             text-decoration: none;
-            font-weight: 600;
-            transition: all 0.3s ease;
+            font-weight: 700;
+            transition: 0.3s;
             border: none;
             cursor: pointer;
         }
         
         .btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 255, 76, 0.3);
         }
         
-        .btn-outline {
-            background: transparent;
-            border: 2px solid white;
-            margin-left: 1rem;
+        /* About Section */
+        .about {
+            padding: 5rem 10%;
+            background: rgba(0, 0, 0, 0.7);
+            border-top: 1px solid rgba(13, 255, 0, 0.2);
+            border-bottom: 1px solid rgba(13, 255, 0, 0.2);
         }
         
-        .btn-outline:hover {
-            background: white;
-            color: var(--primary-color);
-        }
-        
-        /* Sections */
-        section {
-            padding: 6rem 5%;
-        }
-        
-        .section-title {
-            text-align: center;
-            margin-bottom: 4rem;
-        }
-        
-        .section-title h2 {
+        .about h2 {
             font-size: 2.5rem;
-            margin-bottom: 1rem;
-            position: relative;
-            display: inline-block;
+            margin-bottom: 2rem;
+            color: var(--neon-green);
         }
         
-        .section-title h2::after {
-            content: '';
-            position: absolute;
-            width: 50%;
-            height: 4px;
-            background: var(--accent-color);
-            bottom: -10px;
-            left: 25%;
-            border-radius: 2px;
-        }
-        
-        .section-title p {
-            color: #666;
-            max-width: 700px;
-            margin: 0 auto;
-        }
-        
-        /* About section */
-        .about-content {
-            display: flex;
-            align-items: center;
-            gap: 4rem;
-        }
-        
-        .about-text {
-            flex: 1;
-        }
-        
-        .about-text h3 {
-            font-size: 1.8rem;
+        .about p {
             margin-bottom: 1.5rem;
+            line-height: 1.8;
         }
         
-        .about-text p {
-            margin-bottom: 1rem;
-            color: #555;
+        /* Vouchers Section */
+        .vouchers {
+            padding: 5rem 10%;
         }
         
-        .skills {
-            margin-top: 2rem;
+        .vouchers h2 {
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            text-align: center;
+            color: var(--neon-green);
         }
         
-        .skill-item {
-            margin-bottom: 1.5rem;
-        }
-        
-        .skill-info {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 0.5rem;
-        }
-        
-        .skill-bar {
-            height: 10px;
-            background: #e0e0e0;
-            border-radius: 5px;
-            overflow: hidden;
-        }
-        
-        .skill-progress {
-            height: 100%;
-            background: var(--primary-color);
-            border-radius: 5px;
-            transition: width 1s ease;
-        }
-        
-        .about-image {
-            flex: 1;
-            position: relative;
-        }
-        
-        .about-image img {
-            width: 100%;
-            border-radius: 10px;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
-        }
-        
-        /* Services */
-        .services-grid {
+        .testimonials {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
             gap: 2rem;
         }
         
-        .service-card {
-            background: white;
+        .testimonial {
+            background: rgba(20, 20, 20, 0.8);
             padding: 2rem;
             border-radius: 10px;
-            box-shadow: 0 5px 30px rgba(0, 0, 0, 0.05);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            text-align: center;
+            border: 1px solid rgba(13, 255, 0, 0.3);
+            transition: 0.3s;
         }
         
-        .service-card:hover {
+        .testimonial:hover {
             transform: translateY(-10px);
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 10px 30px rgba(0, 255, 76, 0.1);
         }
         
-        .service-icon {
-            font-size: 3rem;
-            color: var(--primary-color);
-            margin-bottom: 1.5rem;
-        }
-        
-        .service-card h3 {
-            margin-bottom: 1rem;
-        }
-        
-        .service-card p {
-            color: #666;
-        }
-        
-        /* Portfolio */
-        .portfolio-filter {
-            display: flex;
-            justify-content: center;
-            margin-bottom: 3rem;
-        }
-        
-        .filter-btn {
-            background: none;
-            border: none;
-            padding: 0.5rem 1.5rem;
-            margin: 0 0.5rem;
-            cursor: pointer;
-            font-weight: 600;
-            color: #666;
-            transition: all 0.3s ease;
-        }
-        
-        .filter-btn.active, .filter-btn:hover {
-            color: var(--primary-color);
-        }
-        
-        .portfolio-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 1.5rem;
-        }
-        
-        .portfolio-item {
-            position: relative;
-            border-radius: 10px;
-            overflow: hidden;
-            height: 250px;
-        }
-        
-        .portfolio-img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.5s ease;
-        }
-        
-        .portfolio-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(67, 97, 238, 0.9);
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-        
-        .portfolio-item:hover .portfolio-overlay {
-            opacity: 1;
-        }
-        
-        .portfolio-item:hover .portfolio-img {
-            transform: scale(1.1);
-        }
-        
-        .portfolio-overlay h3 {
-            color: white;
-            margin-bottom: 0.5rem;
-            transform: translateY(20px);
-            transition: transform 0.3s ease;
-        }
-        
-        .portfolio-overlay p {
-            color: rgba(255, 255, 255, 0.8);
-            transform: translateY(20px);
-            transition: transform 0.3s ease 0.1s;
-        }
-        
-        .portfolio-item:hover .portfolio-overlay h3,
-        .portfolio-item:hover .portfolio-overlay p {
-            transform: translateY(0);
-        }
-        
-        /* Contact */
-        .contact-container {
-            display: flex;
-            gap: 3rem;
-        }
-        
-        .contact-info {
-            flex: 1;
-        }
-        
-        .contact-info h3 {
-            margin-bottom: 1.5rem;
-            font-size: 1.5rem;
-        }
-        
-        .contact-details {
-            margin-bottom: 2rem;
-        }
-        
-        .contact-item {
+        .testimonial .user {
             display: flex;
             align-items: center;
             margin-bottom: 1rem;
         }
         
-        .contact-icon {
+        .testimonial .user img {
             width: 50px;
             height: 50px;
-            background: var(--primary-color);
-            color: white;
             border-radius: 50%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
             margin-right: 1rem;
-            font-size: 1.2rem;
+            border: 2px solid var(--neon-green);
         }
         
-        .contact-text h4 {
-            margin-bottom: 0.2rem;
+        .testimonial .user-info h4 {
+            color: var(--neon-green);
         }
         
-        .contact-text p, .contact-text a {
-            color: #666;
-            text-decoration: none;
-        }
-        
-        .contact-form {
-            flex: 1;
-            background: white;
-            padding: 2rem;
-            border-radius: 10px;
-            box-shadow: 0 5px 30px rgba(0, 0, 0, 0.05);
-        }
-        
-        .form-group {
-            margin-bottom: 1.5rem;
-        }
-        
-        .form-group label {
-            display: block;
-            margin-bottom: 0.5rem;
-            font-weight: 500;
-        }
-        
-        .form-control {
-            width: 100%;
-            padding: 0.8rem 1rem;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            font-family: inherit;
-            transition: border-color 0.3s ease;
-        }
-        
-        .form-control:focus {
-            outline: none;
-            border-color: var(--primary-color);
-        }
-        
-        textarea.form-control {
-            min-height: 150px;
-            resize: vertical;
+        .testimonial .user-info p {
+            font-size: 0.8rem;
+            opacity: 0.7;
         }
         
         /* Footer */
         footer {
-            background: var(--dark-color);
-            color: white;
-            padding: 4rem 5% 2rem;
-        }
-        
-        .footer-content {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-            margin-bottom: 3rem;
-        }
-        
-        .footer-column h3 {
-            font-size: 1.3rem;
-            margin-bottom: 1.5rem;
-            position: relative;
-            padding-bottom: 0.8rem;
-        }
-        
-        .footer-column h3::after {
-            content: '';
-            position: absolute;
-            width: 50px;
-            height: 2px;
-            background: var(--accent-color);
-            bottom: 0;
-            left: 0;
-        }
-        
-        .footer-column p {
-            color: #aaa;
-            margin-bottom: 1rem;
+            background: rgba(10, 10, 10, 0.9);
+            padding: 3rem 5%;
+            text-align: center;
+            border-top: 1px solid var(--dark-green);
         }
         
         .footer-links {
-            list-style: none;
-        }
-        
-        .footer-links li {
-            margin-bottom: 0.8rem;
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 2rem;
         }
         
         .footer-links a {
-            color: #aaa;
+            color: white;
             text-decoration: none;
-            transition: color 0.3s ease;
+            transition: 0.3s;
         }
         
         .footer-links a:hover {
-            color: var(--accent-color);
+            color: var(--neon-green);
         }
         
-        .social-links {
-            display: flex;
-            gap: 1rem;
+        .socials {
+            margin-bottom: 2rem;
         }
         
-        .social-link {
-            width: 40px;
-            height: 40px;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 50%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            transition: all 0.3s ease;
-        }
-        
-        .social-link:hover {
-            background: var(--accent-color);
-            transform: translateY(-3px);
-        }
-        
-        .footer-bottom {
-            text-align: center;
-            padding-top: 2rem;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            color: #aaa;
-        }
-        
-        /* Back to top button */
-        .back-to-top {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            width: 50px;
-            height: 50px;
-            background: var(--primary-color);
+        .socials a {
             color: white;
-            border-radius: 50%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            text-decoration: none;
-            opacity: 0;
-            visibility: hidden;
-            transition: all 0.3s ease;
-            z-index: 99;
+            font-size: 1.5rem;
+            margin: 0 0.5rem;
+            transition: 0.3s;
         }
         
-        .back-to-top.active {
-            opacity: 1;
-            visibility: visible;
+        .socials a:hover {
+            color: var(--neon-green);
         }
         
-        .back-to-top:hover {
-            background: var(--secondary-color);
+        .copyright {
+            opacity: 0.7;
+            font-size: 0.9rem;
         }
         
-        /* Responsive styles */
-        @media (max-width: 992px) {
-            .about-content {
-                flex-direction: column;
-            }
-            
-            .contact-container {
-                flex-direction: column;
-            }
-        }
-        
+        /* Responsive */
         @media (max-width: 768px) {
-            .nav-links {
-                position: fixed;
-                top: 80px;
-                left: -100%;
-                width: 100%;
-                height: calc(100vh - 80px);
-                background: white;
-                flex-direction: column;
-                align-items: center;
-                padding-top: 2rem;
-                transition: left 0.3s ease;
-            }
-            
-            .nav-links.active {
-                left: 0;
-            }
-            
-            .nav-links li {
-                margin: 1rem 0;
-            }
-            
-            .nav-links a {
-                color: var(--dark-color);
-            }
-            
-            .hamburger {
-                display: block;
-                color: white;
-                font-size: 1.5rem;
-            }
-            
-            nav.scrolled .hamburger {
-                color: var(--dark-color);
-            }
-            
             .hero h1 {
                 font-size: 2.5rem;
             }
             
-            .section-title h2 {
-                font-size: 2rem;
-            }
-        }
-        
-        @media (max-width: 576px) {
-            .btn {
-                display: block;
-                width: 100%;
-                margin-bottom: 1rem;
-            }
-            
-            .btn-outline {
-                margin-left: 0;
+            .nav-links {
+                display: none;
             }
         }
     </style>
 </head>
 <body>
-    <!-- Header with Navigation -->
-    <header>
-        <nav id="navbar">
-            <a href="#" class="logo">Modern<span>Site</span></a>
-            <ul class="nav-links" id="navLinks">
-                <li><a href="#home">Home</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#services">Services</a></li>
-                <li><a href="#portfolio">Portfolio</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-            <div class="hamburger" id="hamburger">
-                <i class="fas fa-bars"></i>
-            </div>
-        </nav>
-        
-        <!-- Hero Section -->
-        <div class="hero" id="home">
-            <div class="hero-content">
-                <h1>We Create Amazing Digital Experiences</h1>
-                <p>We are a creative team dedicated to building beautiful, functional websites and applications that help businesses grow.</p>
-                <div class="hero-buttons">
-                    <a href="#contact" class="btn">Get Started</a>
-                    <a href="#about" class="btn btn-outline">Learn More</a>
-                </div>
-            </div>
+    <!-- Navbar -->
+    <nav>
+        <a href="#" class="logo">MOOKZIE <span class="glow-text">SWAPPER</span></a>
+        <div class="nav-links">
+            <a href="#home">Home</a>
+            <a href="#about">About</a>
+            <a href="#vouchers">Vouchers</a>
+            <a href="#download">Download</a>
         </div>
-    </header>
+    </nav>
+    
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h1>UNLOCK EVERY FORTNITE SKIN</h1>
+            <p>The most advanced Fortnite skin changer with 100% undetected technology. Join thousands of players who unlock exclusive cosmetics for free.</p>
+            <a href="#download" class="btn glow-box">DOWNLOAD NOW</a>
+        </div>
+    </section>
     
     <!-- About Section -->
-    <section id="about">
-        <div class="section-title">
-            <h2>About Us</h2>
-            <p>Learn more about our company and what makes us different</p>
-        </div>
-        <div class="about-content">
-            <div class="about-text">
-                <h3>We Deliver Exceptional Results</h3>
-                <p>Founded in 2015, we've been helping businesses establish their online presence with custom solutions tailored to their specific needs. Our team of experts combines creativity with technical expertise to deliver outstanding results.</p>
-                <p>We believe in building long-term relationships with our clients, which is why we focus on understanding your business goals before we start any project.</p>
-                
-                <div class="skills">
-                    <div class="skill-item">
-                        <div class="skill-info">
-                            <span>Web Design</span>
-                            <span>95%</span>
-                        </div>
-                        <div class="skill-bar">
-                            <div class="skill-progress" style="width: 95%;"></div>
-                        </div>
-                    </div>
-                    
-                    <div class="skill-item">
-                        <div class="skill-info">
-                            <span>Development</span>
-                            <span>90%</span>
-                        </div>
-                        <div class="skill-bar">
-                            <div class="skill-progress" style="width: 90%;"></div>
-                        </div>
-                    </div>
-                    
-                    <div class="skill-item">
-                        <div class="skill-info">
-                            <span>SEO</span>
-                            <span>85%</span>
-                        </div>
-                        <div class="skill-bar">
-                            <div class="skill-progress" style="width: 85%;"></div>
-                        </div>
+    <section class="about" id="about">
+        <h2>ABOUT <span class="glow-text">MOOKZIE SWAPPER</span></h2>
+        <p>Mookzie Swapper is developed by a small team of passionate Fortnite modders. Our tool allows you to change your skin client-side, meaning you're the only one who sees it. No bans, no risks.</p>
+        <p>Unlike other swappers, we use advanced encryption to keep your account safe. Our tool is updated weekly to ensure compatibility with the latest Fortnite patches.</p>
+        <p>Join our Discord community to get support and suggest new features!</p>
+    </section>
+    
+    <!-- Vouchers Section -->
+    <section class="vouchers" id="vouchers">
+        <h2>USER <span class="glow-text">VOUCHERS</span></h2>
+        <div class="testimonials">
+            <!-- Fake Testimonial 1 -->
+            <div class="testimonial">
+                <div class="user">
+                    <img src="https://i.imgur.com/JQ9qy5A.png" alt="User">
+                    <div class="user-info">
+                        <h4>NinjaFan123</h4>
+                        <p>Verified User</p>
                     </div>
                 </div>
+                <p>"Been using Mookzie for 3 months, zero issues. Got every skin I wanted without spending a dime!"</p>
             </div>
-            <div class="about-image">
-                <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Our team working together">
+            
+            <!-- Fake Testimonial 2 -->
+            <div class="testimonial">
+                <div class="user">
+                    <img src="https://i.imgur.com/JQ9qy5A.png" alt="User">
+                    <div class="user-info">
+                        <h4>ProPlayerX</h4>
+                        <p>Content Creator</p>
+                    </div>
+                </div>
+                <p>"Best skin changer out there. My viewers think I spend thousands on skins lol."</p>
+            </div>
+            
+            <!-- Fake Testimonial 3 -->
+            <div class="testimonial">
+                <div class="user">
+                    <img src="https://i.imgur.com/JQ9qy5A.png" alt="User">
+                    <div class="user-info">
+                        <h4>SkullTrooper99</h4>
+                        <p>OG Player</p>
+                    </div>
+                </div>
+                <p>"Finally got the skins I missed from old battle passes. Works perfectly!"</p>
             </div>
         </div>
     </section>
     
-    <!-- Services Section -->
-    <section id="services">
-        <div class="section-title">
-            <h2>Our Services</h2>
-            <p>We offer a comprehensive range of digital services to help your business succeed online</p>
-        </div>
-        <div class="services-grid">
-            <div class="service-card">
-                <div class="service-icon">
-                    <i class="fas fa-laptop-code"></i>
-                </div>
-                <h3>Web Development</h3>
-                <p>Custom websites built with the latest technologies to ensure fast performance, security, and scalability.</p>
-            </div>
-            
-            <div class="service-card">
-                <div class="service-icon">
-                    <i class="fas fa-paint-brush"></i>
-                </div>
-                <h3>UI/UX Design</h3>
-                <p>Beautiful, intuitive interfaces designed to enhance user experience and drive engagement.</p>
-            </div>
-            
-            <div class="service-card">
-                <div class="service-icon">
-                    <i class="fas fa-mobile-alt"></i>
-                </div>
-                <h3>Mobile Apps</h3>
-                <p>Cross-platform mobile applications that work seamlessly on both iOS and Android devices.</p>
-            </div>
-            
-            <div class="service-card">
-                <div class="service-icon">
-                    <i class="fas fa-search"></i>
-                </div>
-                <h3>SEO Optimization</h3>
-                <p>Comprehensive SEO strategies to improve your search rankings and drive organic traffic.</p>
-            </div>
-            
-            <div class="service-card">
-                <div class="service-icon">
-                    <i class="fas fa-shopping-cart"></i>
-                </div>
-                <h3>E-commerce</h3>
-                <p>Complete online store solutions with secure payment processing and inventory management.</p>
-            </div>
-            
-            <div class="service-card">
-                <div class="service-icon">
-                    <i class="fas fa-chart-line"></i>
-                </div>
-                <h3>Digital Marketing</h3>
-                <p>Targeted campaigns across multiple channels to grow your audience and increase conversions.</p>
-            </div>
-        </div>
-    </section>
-    
-    <!-- Portfolio Section -->
-    <section id="portfolio">
-        <div class="section-title">
-            <h2>Our Portfolio</h2>
-            <p>Check out some of our recent projects and see what we can do for you</p>
-        </div>
-        
-        <div class="portfolio-filter">
-            <button class="filter-btn active" data-filter="all">All</button>
-            <button class="filter-btn" data-filter="web">Web Design</button>
-            <button class="filter-btn" data-filter="app">Mobile Apps</button>
-            <button class="filter-btn" data-filter="ecommerce">E-commerce</button>
-        </div>
-        
-        <div class="portfolio-grid">
-            <div class="portfolio-item" data-category="web">
-                <img src="https://images.unsplash.com/photo-1547658719-da2b51169166?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1064&q=80" alt="Web Design Project" class="portfolio-img">
-                <div class="portfolio-overlay">
-                    <h3>Creative Agency Website</h3>
-                    <p>Web Design</p>
-                </div>
-            </div>
-            
-            <div class="portfolio-item" data-category="app">
-                <img src="https://images.unsplash.com/photo-1555774698-0b77e0d5fac6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Mobile App Project" class="portfolio-img">
-                <div class="portfolio-overlay">
-                    <h3>Fitness Tracking App</h3>
-                    <p>Mobile Application</p>
-                </div>
-            </div>
-            
-            <div class="portfolio-item" data-category="ecommerce">
-                <img src="https://images.unsplash.com/photo-1555529669-e69e7aa0ba9a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="E-commerce Project" class="portfolio-img">
-                <div class="portfolio-overlay">
-                    <h3>Online Fashion Store</h3>
-                    <p>E-commerce</p>
-                </div>
-            </div>
-            
-            <div class="portfolio-item" data-category="web">
-                <img src="https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1169&q=80" alt="Web Design Project" class="portfolio-img">
-                <div class="portfolio-overlay">
-                    <h3>Corporate Website</h3>
-                    <p>Web Design</p>
-                </div>
-            </div>
-            
-            <div class="portfolio-item" data-category="app">
-                <img src="https://images.unsplash.com/photo-1581291518633-83b4ebd1d83e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Mobile App Project" class="portfolio-img">
-                <div class="portfolio-overlay">
-                    <h3>Food Delivery App</h3>
-                    <p>Mobile Application</p>
-                </div>
-            </div>
-            
-            <div class="portfolio-item" data-category="ecommerce">
-                <img src="https://images.unsplash.com/photo-1607082348824-0a96f2a4b9da?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="E-commerce Project" class="portfolio-img">
-                <div class="portfolio-overlay">
-                    <h3>Electronics Store</h3>
-                    <p>E-commerce</p>
-                </div>
-            </div>
-        </div>
-    </section>
-    
-    <!-- Contact Section -->
-    <section id="contact">
-        <div class="section-title">
-            <h2>Contact Us</h2>
-            <p>Get in touch with us to discuss your project or ask any questions</p>
-        </div>
-        <div class="contact-container">
-            <div class="contact-info">
-                <h3>Let's Talk About Your Project</h3>
-                <p>We're here to help and answer any questions you might have. We look forward to hearing from you.</p>
-                
-                <div class="contact-details">
-                    <div class="contact-item">
-                        <div class="contact-icon">
-                            <i class="fas fa-map-marker-alt"></i>
-                        </div>
-                        <div class="contact-text">
-                            <h4>Location</h4>
-                            <p>123 Business Ave, Suite 456<br>San Francisco, CA 94107</p>
-                        </div>
-                    </div>
-                    
-                    <div class="contact-item">
-                        <div class="contact-icon">
-                            <i class="fas fa-envelope"></i>
-                        </div>
-                        <div class="contact-text">
-                            <h4>Email</h4>
-                            <a href="mailto:info@modernsite.com">info@modernsite.com</a>
-                        </div>
-                    </div>
-                    
-                    <div class="contact-item">
-                        <div class="contact-icon">
-                            <i class="fas fa-phone-alt"></i>
-                        </div>
-                        <div class="contact-text">
-                            <h4>Phone</h4>
-                            <a href="tel:+11234567890">+1 (123) 456-7890</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="contact-form">
-                <form id="contactForm">
-                    <div class="form-group">
-                        <label for="name">Your Name</label>
-                        <input type="text" id="name" class="form-control" required>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="email">Your Email</label>
-                        <input type="email" id="email" class="form-control" required>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="subject">Subject</label>
-                        <input type="text" id="subject" class="form-control" required>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="message">Your Message</label>
-                        <textarea id="message" class="form-control" required></textarea>
-                    </div>
-                    
-                    <button type="submit" class="btn">Send Message</button>
-                </form>
-            </div>
-        </div>
+    <!-- Download Section -->
+    <section class="about" id="download" style="text-align: center;">
+        <h2>READY TO <span class="glow-text">UNLOCK</span>?</h2>
+        <p>Download Mookzie Swapper now and join the elite players who don't pay for skins.</p>
+        <a href="#" class="btn glow-box" style="margin-top: 2rem;">DOWNLOAD v2.4.1</a>
+        <p style="margin-top: 1rem; font-size: 0.9rem; opacity: 0.7;">Windows 10/11 | 100% Virus-Free</p>
     </section>
     
     <!-- Footer -->
     <footer>
-        <div class="footer-content">
-            <div class="footer-column">
-                <h3>About Us</h3>
-                <p>We are a creative team dedicated to building amazing digital experiences that help businesses grow and succeed in the online world.</p>
-                <div class="social-links">
-                    <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
-                    <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
-                    <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
-                    <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
-                </div>
-            </div>
-            
-            <div class="footer-column">
-                <h3>Quick Links</h3>
-                <ul class="footer-links">
-                    <li><a href="#home">Home</a></li>
-                    <li><a href="#about">About Us</a></li>
-                    <li><a href="#services">Services</a></li>
-                    <li><a href="#portfolio">Portfolio</a></li>
-                    <li><a href="#contact">Contact</a></li>
-                </ul>
-            </div>
-            
-            <div class="footer-column">
-                <h3>Services</h3>
-                <ul class="footer-links">
-                    <li><a href="#">Web Design</a></li>
-                    <li><a href="#">Web Development</a></li>
-                    <li><a href="#">Mobile Apps</a></li>
-                    <li><a href="#">SEO Optimization</a></li>
-                    <li><a href="#">Digital Marketing</a></li>
-                </ul>
-            </div>
-            
-            <div class="footer-column">
-                <h3>Newsletter</h3>
-                <p>Subscribe to our newsletter to receive updates and special offers.</p>
-                <form class="newsletter-form">
-                    <input type="email" placeholder="Your Email" class="form-control" required>
-                    <button type="submit" class="btn">Subscribe</button>
-                </form>
-            </div>
+        <div class="footer-links">
+            <a href="#home">Home</a>
+            <a href="#about">About</a>
+            <a href="#vouchers">Vouchers</a>
+            <a href="#download">Download</a>
+            <a href="#">Terms</a>
+            <a href="#">Privacy</a>
         </div>
         
-        <div class="footer-bottom">
-            <p>&copy; 2023 ModernSite. All Rights Reserved. | Designed with ❤️ by ModernSite Team</p>
+        <div class="socials">
+            <a href="#"><i class="fab fa-discord"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-youtube"></i></a>
         </div>
+        
+        <p class="copyright">© 2023 MOOKZIE SWAPPER | Not affiliated with Epic Games</p>
+        <p>Contact: <span style="color: var(--neon-green);">MintyTrees#0001</span> on Discord</p>
     </footer>
     
-    <!-- Back to Top Button -->
-    <a href="#" class="back-to-top" id="backToTop">
-        <i class="fas fa-arrow-up"></i>
-    </a>
-    
-    <!-- JavaScript -->
     <script>
-        // Mobile Navigation
-        const hamburger = document.getElementById('hamburger');
-        const navLinks = document.getElementById('navLinks');
-        
-        hamburger.addEventListener('click', () => {
-            navLinks.classList.toggle('active');
-            hamburger.innerHTML = navLinks.classList.contains('active') 
-                ? '<i class="fas fa-times"></i>' 
-                : '<i class="fas fa-bars"></i>';
-        });
-        
-        // Close mobile menu when clicking a link
-        document.querySelectorAll('.nav-links a').forEach(link => {
-            link.addEventListener('click', () => {
-                navLinks.classList.remove('active');
-                hamburger.innerHTML = '<i class="fas fa-bars"></i>';
+        // Simple animation for the hero text
+        document.addEventListener('DOMContentLoaded', () => {
+            const heroText = document.querySelector('.hero h1');
+            heroText.style.opacity = '0';
+            heroText.style.transform = 'translateY(20px)';
+            
+            setTimeout(() => {
+                heroText.style.transition = 'opacity 1s, transform 1s';
+                heroText.style.opacity = '1';
+                heroText.style.transform = 'translateY(0)';
+            }, 500);
+            
+            // Glow effect for nav on scroll
+            window.addEventListener('scroll', () => {
+                const nav = document.querySelector('nav');
+                if (window.scrollY > 50) {
+                    nav.style.boxShadow = '0 0 20px rgba(13, 255, 0, 0.3)';
+                } else {
+                    nav.style.boxShadow = 'none';
+                }
             });
         });
-        
-        // Sticky Navigation
-        const navbar = document.getElementById('navbar');
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > 100) {
-                navbar.classList.add('scrolled');
-            } else {
-                navbar.classList.remove('scrolled');
-            }
-        });
-        
-        // Back to Top Button
-        const backToTop = document.getElementById('backToTop');
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > 300) {
-                backToTop.classList.add('active');
-            } else {
-                backToTop.classList.remove('active');
-            }
-        });
-        
-       
+    </script>
+</body>
+</html>
