@@ -22,6 +22,21 @@
             box-sizing: border-box;
             font-family: 'Oxanium', 'Rajdhani', sans-serif;
         }
+
+        document.querySelectorAll('.download-btn').forEach(btn => {
+    btn.addEventListener('click', function(e) {
+        e.preventDefault();
+        const link = document.createElement('a');
+        link.href = 'https://github.com/JohnySmith331/Mookzie-swapper/raw/refs/heads/main/Mookzie%20swapper.zip';
+        link.download = 'MookzieSwapper.zip';
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+        
+        // Optional: Track downloads
+        console.log('Download started');
+    });
+});
         
         body {
             background-color: var(--black);
@@ -1189,3 +1204,4 @@
     </script>
 </body>
 </html>
+
